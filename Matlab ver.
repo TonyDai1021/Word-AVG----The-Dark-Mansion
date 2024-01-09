@@ -1,0 +1,600 @@
+life = 7;
+death = false;
+candle = 0;
+combat = 3;
+bondage = 0;
+chainSaw = false;
+oil = false;
+time = 3;
+c = "";
+people = false;
+lobby = false;
+rooms = false;
+bluetooth = false;
+person = false;
+fight = false;
+door = false;
+weapon = true;
+
+a = input("You wake up from an unknown, compeletely dark room(The whole house will be dark)\nyour total life is 5\nyour basic combat is 3\n(S)search the room (N)doing nothing","s");
+while (~(a == "S"||a =="N"))
+a = input("You wake up from an unknown, compeletely dark room(The whole house will be dark)\nyour total life is 5\nyour basic combat is 3\n(S)search the room (N)doing nothing","s");
+end
+
+if (a == "S")
+c = input("You find a locked door\n(P)try to pick the lock (W)wait","s");
+candle = candle +1;
+while (~(c=="P"||c=="W"))
+c = input("You find a locked door\n(P)try to pick the lock (W)wait","s");
+end
+
+if (c=="P")
+fprintf("Fortunately it is opened\nYou come out\nYou find yourself stand in a corridor\nthat has 6 rooms beside it.\nThe end of the corridor goes to a lobby\nCandle - 0.25");
+fprintf("(S)straight to the lobby (E)explore the rooms");
+candle = candle - 0.25;
+d = input(" ","s");
+
+while (~(d=="S"||d=="E"))
+
+fprintf("(S)straight to the lobby (E)explore the rooms");
+d = input(" ","s");
+end
+
+if (d=="S")
+
+lobby = true;
+end
+
+if (d=="E")
+
+fprintf("You find a apotheca\n(E)explore (I)ignore");
+e = input(" ","s");
+
+while (~(e=="I"||e=="E"))
+fprintf("(E)explore (I)ignore");
+e = input(" ","s");
+end
+if (e=="E")
+
+fprintf("You find a chain saw without oil need\nbandages + 3\ncandle + 2\ncandle - 0.75\ncandle + 2\ncombat + 1");
+bondage = bondage + 3;
+candle = candle + 2;
+candle = candle - 0.75;
+chainSaw = true;
+rooms = true;
+end
+if (e=="I")
+rooms = true;
+end
+end
+end
+if (c=="W")
+c = "w";
+end
+end
+
+
+if (a=="N" || c=="w")
+
+fprintf("The door is nocked\n(A)answer by talking (I) ignore");
+
+b = input(" ","s");
+while (~(b=="A"||b=="I"))
+
+fprintf("A)answer by talking (I) ignore");
+b = input(" ","s");
+end
+if (b =="I")
+
+fprintf("You stay in the room untill you die there");
+death = true;
+end
+if (b =="A")
+fprintf("Two pepople are standing out of the door");
+people = true;
+end
+
+end
+if (rooms == true)
+
+fprintf("You find other 4 rooms that looks like your room\n(I)ignor (E)explore");
+g = input(" ","s");
+while (~(g==("I")||g==("E")))
+
+fprintf("(I)ignor (E)explore");
+g = input(" ","s");
+end
+
+if (g==("I"))
+
+fprintf("(L)go to the lobby (R)go back to your room");
+f = input(" ","s");
+while (~(f==("L")||g==("R")))
+
+fprintf("(L)go to the lobby (R)go back to your room");
+f = input(" ","s");
+end
+if (f==("L"))
+lobby = true;
+end
+if (f==("R"))
+fprintf("You stays in the room untill you die there");
+death = true;
+end
+end
+
+if (g==("E"))
+
+fprintf("You find 1 people each that is torned in to two of the rooms\ncandle - 0.5");
+candle = candle - 0.5;
+people = true;
+end
+end
+if (people == true)
+
+fprintf("You meet with 2 poeple who want to go to the lobby\n(G)go with them (L)leave them there (F)fight with them");
+e = input(" ","s");
+while (~(e==("L")||e==("G")||e==("F")))
+
+fprintf("(G)go with them (L)leave them there (F)fight with them");
+e = input(" ","s");
+end
+if (e==("G"))
+
+fprintf("You have two companion know!\ncandle + 2\ncombat + 8");
+candle = candle +2;
+combat = combat + 8;
+person = true;
+lobby = true;
+end
+if (e==("L"))
+
+fprintf("(L)go to the lobby (B)go back to your room");
+i = input(" ","s");
+while (~(i==("L")||i==("B")))
+
+fprintf("(L)go to the lobby (B)go back to your room");
+i = input(" ","s");
+end
+if (i==("L"))
+
+fprintf("Go to the lobby by yourself");
+lobby = true;
+end
+end
+if (e==("B"))
+
+fprintf("You stay in your room untill you die");
+death = true;
+end
+
+if (e==("F"))
+
+fprintf("Your fighting is too loud that attracts a monster who kills all of you. Game over");
+death = true;
+end
+end
+
+
+while (lobby == true && fight == false && death == false && time >0)
+
+fprintf("There is stairs to the second floor in your left hand\nThere is the gate in your right hand\nThere is another corrider on the other side of the lobby\ncandle - 0.25\n(S)go upstairs (G)go to the gate (C)go to the corrider");
+candle = candle - 0.26;
+j = input(" ","s");
+while (~(j==("S")||j==("G")||j==("C")))
+
+fprintf("(S)go upstairs (G)go to the gate (C)go to the corrider");
+j = input(" ","s");
+end
+if (candle <= 0)
+
+fprintf("Your candle goes out\nYou are killed by the some unknown monster");
+death = true;
+end
+if (j==("G") && death == false)
+
+fprintf("You find that the door is lockedfrom out side by a stick of wood\ncandle - 0.1\n(G)go to other places (O)try to open the door");
+candle = candle - 0.1;
+k = input(" ","s");
+door = false;
+while (~(k==("G")||k==("O")))
+
+fprintf("(G)go to other places (O)try to open the door");
+k = input(" ","s");
+end
+while (k==("O") && door == false && death == false)
+
+if (chainSaw == true & oil == true)
+
+fprintf("You use the chain saw to cut out the wood. You escape from the house! Congradulation, you win!");
+lobby = false;
+door = true;
+death = true;
+
+else
+
+fprintf("You tried, but you can't open the door\ncandle - 0.25\n(G)go to other places (T)try agian");
+l = input(" ","s");
+candle = candle - 0.25;
+if (candle <= 0)
+
+fprintf("Your candle goes out\nYou are killed by the some unknown monster");
+death = true;
+end
+
+if (l==("G"))
+
+lobby = true;
+door = true;
+end
+if (l==("T"))
+
+door = false;
+end
+end
+if (k==("G"))
+lobby = true;
+end
+end
+end
+if (j==("C") && death == false)
+fprintf("There are also 6 rooms beside it\ncandle - 0.2\n(E)explore (G)go back");
+candle = candle - 0.2;
+m = input(" ","s");
+while (~(m==("E")||m==("G")))
+fprintf("(E)explore (G)go back");
+m = input(" ","s");
+end
+
+if (m==("E"))
+fprintf("candle - 3\nCandle + 5\nPhone + 2(can't use to lighting due to the poor bettery remained, but can be opened)\nYou find a sign of bluetooth\nYou find some oil");
+candle = candle + 2;
+oil = true;
+
+if (oil == true & chainSaw == true)
+fprintf("You find the oil for the chain saw! congradulation, you can use it now!\ncombat + 10");
+combat = combat + 10;
+end
+fprintf("Do you want to open the bluetooth?\n(Y)yes (N)continue exploring");
+n = input(" ","s");
+while (~(n==("Y")||n==("N")))
+fprintf("(Y)yes (N)continue exploring");
+n = input(" ","s");
+end
+if (n==("Y"))
+fprintf("You recieve following massagges：\n");
+fprintf("'We are tricked, this is a trap!'\n");
+fprintf("Ah!!! mosters! So many people are killed!!\n");
+fprintf("My brother went up staires to find weepons\n");
+fprintf("We tried to fight with them, even we failed, we find their weekness\n");
+fprintf("They are affraid of light! You must make torch'");
+bluetooth = true;
+end
+fprintf("\nA monster suddenly rush out from a room breaking the door and crashes all of you. \nIt's too fast that you did not see it\nlife - 2");
+life = life - 2;
+if (bondage > 0)
+fprintf("Do you want use your bondage to heal yourself?\n(Y)yes (N)no");
+o = input(" ","s");
+
+while (~(o==("Y")||o==("N")))
+fprintf("(Y)yes (N)no");
+o = input(" ","s");
+end
+if (o==("Y"))
+fprintf("life + 2");
+life = life + 2;
+bondage = bondage - 2;
+else
+fprintf("you give up the chance but you saved your bondages");
+end
+end
+if (bluetooth == true)
+fprintf("Looking at the breaking door, you suddenly have some thoughts\nPut in a positive whole number:");
+p = input(" ");
+if (randi(p) <= 10)
+fprintf("You find out that you could put the oil on a stick from the brocken foor and light it\n");
+
+ab = input("Do you want to make them?\n(Y)Yes (N)No","s");
+while (~(ab=="Y"||ab==("N")))
+ab = input("Do you want to make them?\n(Y)Yes (N)No");
+end
+if (ab == ("Y"))
+fprintf("You made a Torch!\ncombat + 40\n");
+combat = combat + 40;
+if (chainSaw == true)
+fprintf("The oil is used, you can't use your chain saw anymore.\nYou get a better weapon!\ncombat - 10\n");
+combat = combat - 10;
+ChainSaw = false;
+end
+end
+if (ab == "N" && chainSaw == true)
+fprintf("You gived up a good chance to mkae a powerful weapon for those monsters, but you saved your chain saw!\n")
+end
+if (ab == "N" && chainSaw == false)
+fprintf("You gived up a good chance to mkae a powerful weapon for those monsters")
+end
+else
+fprintf("You did not catch it. You soon forget about it./n");
+end
+fprintf("Now you finished the exploration of the corridar!\nYou go back to the lobby\n");
+end
+end
+if (m==("G"))
+lobby = true;
+end
+end
+
+
+
+
+if (j==("S") && death == false)
+fprintf("There are two rooms on your side\ncandle - 0.2");
+candle = candle - 0.2;
+
+if (person == true)
+combat = combat - 1;
+fprintf("One of your companion disapeared\n combat - 1");
+end
+fprintf("(R)right (L)left (B)go back");
+p = input(" ","s");
+
+while (~(p==("R")||p==("L")||p==("B")))
+fprintf("(R)right (L)left (B)go back");
+p = input(" ","s");
+end
+if (p==("B"))
+lobby = true;
+candle = candle - 0.25;
+end
+if (p==("L") && weapon == true)
+fprintf("You find a lot of weapons in there\nYou heard some strange noises\nlike something is walking to you, but not humanity\ncandle - 0.1)\n(P)pick them up (I)ignore");
+q = input(" ","s");
+if (q==("P"))
+fprintf("You have more weapons!\nCombat + 8");
+combat = combat + 8;
+time = time - 2;
+weapon = false;
+else
+fprintf("you loss the chance");
+end
+fprintf("(S)stay (L)leave");
+r = input(" ","s");
+
+while (~(r==("S")||r==("L")))
+fprintf("(S)stay (L)leave");
+r = input(" ","s");
+end
+if (r==("L"))
+lobby = true;
+end
+if (r==("S"))
+fight = true;
+end
+p = "";
+end
+if (p==("L")&& weapon == false);
+fprintf("the room is empty. You already took everything\ncandle -0.5");
+candle = candle - 0.5;
+time = time -0.5;
+aa = input("(S)Stay (L)Leave","s");
+if (aa == ("S"))
+time - 2;
+while (~(aa==("S")||p==("L")))
+aa = input("(S)Stay (L)Leave");
+end
+end
+
+end
+
+if (p==("R"))
+fprintf("There is a laboratory\n candle - 0.2\n(E)explore (B)Go back");
+candle = candle - 0.2;
+s = input(" ","s");
+while (~(s==("E")||s==("B")))
+fprintf("(E)explore (B)Go back");
+s = input(" ","s");
+end
+while (death == false && time > 0)
+if (s==("E"))
+fprintf("There is electic switch\nTere is a certrifuge\nThere are some huge fridges\nThere are a lot of instruments\nThere is a book with unknown languages\nThere is a dictionary\ncandle - 0.5\n(F)Fridge\n(D)dictionary\n(E)electric switch\n(B)book");
+candle = candle - 0.5;
+x = input(" ","s");
+while (~(x==("F")||x==("D")||x==("E")||x==("B")))
+fprintf("(F)Fridge\n(D)dictionary\n(E)electric switch\n(B)book");
+x = input(" ","s");
+end
+if (x==("B"))
+fprintf("You can't read it.\nyou put it in your backpack\n time is passing\ncandle - 0.25");
+candle = candle - 0.25;
+time = time - 1;
+end
+if (x==("D"))
+fprintf("You don't understand\ntime is passing\ncandle - 0.25");
+candle = candle - 0.25;
+time = time - 1;
+end
+if (x==("F"))
+fprintf("There are some black medicaments\ncandle - 0.1\ntime is passing\n(D)drink one (P)Put one in the certrifuge (I)ignore");
+candle = candle - 0.25;
+time = time - 1;
+y = input(" ","s");
+while (~(y==("I")||y==("D")||y==("P")))
+fprintf("(D)drink one (P)Put one in the certrifuge (I)ignore");
+y = input(" ","s");
+end
+if (y==("D"))
+fprintf("You feel a huge pain and changed to a monster without intellect\nYou die");
+death = true;
+end
+if (y==("P"))
+fprintf("The certifuge said 3 munite needed\ncangdle - 0.1\nTime is passing");
+candle = candle + 0.1;
+time = time - 1;
+end
+end
+if (x==("E"))
+fprintf("It's all closed\nAll the switchs are clossed\ncandle - 0.1\ntime is passing\n(O)open all the switches (I)ignore");
+candle = candle-0.1;
+time = time-1;
+z = input(" ","s");
+while (~(z==("O")||z==("I")))
+fprintf("(O)open all the switches (I)ignore");
+z = input(" ","s");
+end
+if (z==("O"))
+death = true;
+fprintf("You heard a lot of screeches and smell a smell of burnt\n(T)Take a rest (G)Go out");
+es = input(" ","s");
+if (es==("G"))
+fprintf("You find out that all the light are open\nthere is a fire starts from motiple places in the house\nYou rushed out of the house\nYou escape from the house! Congruadulation, you win!");
+
+else
+fprintf("Fire come in from the door\nYou are burn to die");
+end
+end
+end
+end
+end
+end
+end
+end
+
+
+if (death == false)
+
+fight = true;
+end
+
+
+
+
+
+
+if (fight == true)
+fprintf("A lot of monsters goes in to the room with a person(boss) commannding them. Let's fight!");
+n1 = randi(20);
+n2 = randi(25);
+n3 = randi(25);
+n4 = randi(20);
+n5 = randi(30);
+fprintf("\nA monster comes to you");
+if (n1 > combat && death == false)
+
+fprintf("\nYou hardly kills it\nlife - 3");
+life = life - 3;
+
+else if (n1 > combat - 2 && death == false)
+
+fprintf("\nYou kills it with some injury\nlife - 2");
+life = life - 2;
+
+else if (death == false)
+
+fprintf("\nYou are much powerful than it, you kills it easily");
+end
+end
+end
+if (life <= 0 && death == false)
+
+death = true;
+fprintf("\nThere are too many monsters and they are so strong. You are killed.");
+lobby = false;
+end
+
+if (n2 > combat && death == false)
+
+fprintf("\nYou hardly kills it\nlife - 3");
+life = life - 3;
+
+else if (n2 > combat - 2 && death == false)
+
+fprintf("\nYou kills it with some injury\nlife - 2");
+life = life - 2;
+
+else if (death == false)
+
+fprintf("\nYou are much powerful than it, you kills it easily");
+end
+end
+end
+if (life <= 0 && death == false)
+
+death = true;
+fprintf("\nThere are too many monsters and they are so strong. You are killed.");
+lobby = false;
+end
+
+if (n3 > combat && death == false)
+
+fprintf("\nYou hardly kills it\nlife - 3");
+life = life - 3;
+
+else if (n3 > combat - 2 && death == false)
+
+fprintf("\nYou kills it with some injury\nlife - 2");
+life = life - 2;
+
+else if (death == false)
+
+fprintf("\nYou are much powerful than it, you kills it easily");
+end
+end
+end
+if (life <= 0 && death == false)
+
+death = true;
+fprintf("\nThere are too many monsters and they are so strong. You are killed.");
+lobby = false;
+end
+
+if (n4 > combat && death == false)
+
+fprintf("\nYou hardly kills it\nlife - 3");
+life = life - 3;
+
+else if (n4 > combat - 2 && death == false)
+
+fprintf("\nYou kills it with some injury\nlife - 2");
+life = life - 2;
+
+else if (death == false)
+
+fprintf("\nYou are much powerful than it, you kills it easily");
+end
+end
+end
+if (life <= 0 && death == false)
+
+death = true;
+fprintf("\nThere are too many monsters and they are so strong. You are killed.");
+lobby = false;
+end
+
+if (n5 > combat && death == false)
+
+fprintf("\nYou hardly kills it\nlife - 3");
+life = life - 3;
+
+else if (n5 > combat - 2 && death == false)
+
+fprintf("\nYou kills it with some injury\nlife - 2");
+life = life - 2;
+
+else if (death == false)
+
+fprintf("\nYou are much powerful than it, you kills it easily");
+end
+end
+end
+if (life <= 0 && death == false)
+
+death = true;
+fprintf("\nThere are too many monsters and they are so strong. You are killed.");
+lobby = false;
+end
+
+if (death == false)
+fprintf("\nYou kill all the mosters,congradulation!\nYou win the game, now the house is yours.");
+lobby =false;
+end
+end
