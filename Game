@@ -1,0 +1,583 @@
+import java.util.Scanner;
+
+
+public class projectImporve
+{
+  public static void main(String[] args) 
+  {
+    int life = 7;
+    boolean death = false;
+    double candle = 0;   
+    int combat = 3;
+    int bondage = 0;
+    boolean chainSaw = false;
+    boolean oil = false;
+    int time = 2;
+    String c = "";
+    boolean people = false;
+    boolean lobby = false;
+    boolean rooms = false;
+    boolean bluetooth = false;
+    boolean person = false;
+    boolean fight = false;
+    boolean door = false;
+
+
+
+
+    Scanner sc = new Scanner(System.in);
+    
+    System.out.println("You wake up from an unknown, compeletely dark room(The whole house will be dark)\nyour total life is 5\nyour basic combat is 3\n(S)search the room  (N)doing nothing");
+    String a = sc.nextLine();
+
+
+    while (!(a.equals("S")||a.equals("N")))
+    {
+    System.out.println("You wake up from an unknown, compeletely dark room(The whole house will be dark)\nyour total life is 5\nyour basic combat is 3\n(S)search the room  (N)doing nothing");
+    a = sc.nextLine();
+    }
+    if (a.equals("S"))
+    {
+      System.out.println("You find a locked door\n(P)try to pick the lock  (W)wait");
+      c = sc.nextLine();
+      candle ++;
+      while (!(c.equals("P")||c.equals("W")))
+    {
+    System.out.println("Candle + 1\nYou find a locked door\n(P)try to pick the lock  (W)wait");
+    c = sc.nextLine();
+    }
+      if (c.equals("P"))
+      {
+        System.out.println("Fortunately it is opened\nYou come out\nYou find yourself stand in a corridor\nthat has 6 rooms beside it.\nThe end of the corridor goes to a lobby\nCandle - 0.25");
+        System.out.println("(S)straight to the lobby   (E)explore the rooms"); 
+        candle -= 0.25; 
+        String d = sc.nextLine();  
+        while (!(d.equals("S")||d.equals("E")))
+        {
+        System.out.println("(S)straight to the lobby   (E)explore the rooms");
+        d = sc.nextLine();
+        }  
+        if (d.equals("S"))
+        {
+          lobby = true;
+        }   
+        else if (d.equals("E"))
+        {
+          System.out.println("You find a apotheca\n(E)explore   (I)ignore");
+          String e = sc.nextLine(); 
+          while (!(e.equals("S")||e.equals("E")))
+        {
+        System.out.println("(E)explore   (I)ignore");
+        e = sc.nextLine();
+        }  
+          if (e.equals("E")) 
+          {
+            System.out.println("You find a chain saw without oil need\nbandages + 3\ncandle + 2\ncandle - 0.75\ncandle + 2\ncombat + 1");
+            bondage += 3;
+            candle += 2; 
+            candle -= 0.75;
+            chainSaw = true;   
+            rooms = true;    
+          }
+          else if (e.equals("I"))
+          rooms = true;
+        }
+      }
+      else if (c.equals("W"))
+      c = "w";
+    }
+    if (a.equals("N") || c.equals("w"))
+    {
+      System.out.println("The door is nocked\n(A)answer by talking   (I) ignore");
+      String b = sc.nextLine();
+      while (!(b.equals("A")||b.equals("I")))
+      {
+      System.out.println("A)answer by talking   (I) ignore");
+      b = sc.nextLine();
+      } 
+      if (b.equals("I"))
+      {
+        System.out.print("You stay in the room untill you die there");
+        death = true;
+      }
+      else if (b.equals("A"))
+      {
+        System.out.println("Two pepople are standing out of the door");
+        people = true;
+      }
+    }
+    if (rooms == true)
+    {
+      System.out.println("You find other 4 rooms that looks like your room\n(I)ignor   (E)explore");
+      String g = sc.nextLine();
+      while (!(g.equals("I")||g.equals("E")))
+      {
+      System.out.println("(I)ignor   (E)explore");
+      g = sc.nextLine();
+      } 
+      if (g.equals("I"))
+      {
+        System.out.println("(L)go to the lobby   (R)go back to your room");
+        String f = sc.nextLine();
+        while (!(f.equals("L")||g.equals("R")))
+        {
+        System.out.println("(L)go to the lobby   (R)go back to your room");
+        f = sc.nextLine();
+        } 
+        if (f.equals("L"))
+        lobby = true;
+        else if (f.equals("R"))
+        {
+        System.out.println("You stays in the room untill you die there");
+        death = true;
+        }    
+      }
+      else if (g.equals("E"))
+      {
+        System.out.println("You find 1 people each that is torned in to two of the rooms\ncandle - 0.5");
+        candle -= 0.5;
+        people = true;
+      }
+    }
+    if (people == true)
+      {
+        System.out.println("You meet with 2 poeple who want to go to the lobby\n(G)go with them   (L)leave them there    (F)fight with them");
+         String e = sc.nextLine();
+         while (!(e.equals("L")||e.equals("G")||e.equals("F")))
+        {
+        System.out.println("(G)go with them   (L)leave them there    (F)fight with them");
+        e = sc.nextLine();
+        } 
+        if (e.equals("G"))
+        {
+          System.out.println("You have two companion know!\ncandle + 2\ncombat + 8");
+          candle += 2;
+          combat += 8;
+          person = true;
+          lobby = true;
+        }
+        else if (e.equals("L"))
+        {
+          System.out.println("(L)go to the lobby   (B)go back to your room");
+          String i = sc.nextLine();
+          while (!(i.equals("L")||i.equals("B")))
+          {
+          System.out.println("(L)go to the lobby   (B)go back to your room");
+          i = sc.nextLine();
+          } 
+          if (i.equals("L"))
+          {
+          System.out.println("Go to the lobby by yourself");
+          lobby = true;
+          }
+          else if (e.equals("B"))
+          {
+          System.out.println("You stay in your room untill you die");
+          death = true;
+          }
+        }
+        else if (e.equals("F"))
+        {
+          System.out.println("Your fighting is too loud that attracts a monster who kills all of you. Game over");
+          death = true;
+        }
+    }    
+      while (lobby == true && fight == false && death == false)
+      {
+        System.out.println("There is stairs to the second floor in your left hand\nThere is the gate in your right hand\nThere is another corrider on the other side of the lobby\ncandle - 0.25\n(S)go upstairs   (G)go to the gate   (C)go to the corrider");
+        candle -= 0.26;
+        String j = sc.nextLine();
+        while (!(j.equals("S")||j.equals("G")||j.equals("C")))
+        {
+        System.out.println("(S)go upstairs   (G)go to the gate   (C)go to the corrider");
+        j = sc.nextLine();
+        } 
+        if (candle <= 0)
+        {
+          System.out.println("Your candle goes out\nYou are killed by the some unknown monster");
+          death = true;
+        }
+        else if (j.equals("G") && death == false)
+        {
+          System.out.println("You find that the door is lockedfrom out side by a stick of wood\ncandle - 0.1\n(G)go to other places   (O)try to open the door");
+          candle -= 0.1;
+          String k = sc.nextLine();
+          door = false;
+          while (!(k.equals("G")||k.equals("O")))
+        {
+        System.out.println("(G)go to other places   (O)try to open the door");
+        k = sc.nextLine();
+        } 
+          while (k.equals("O") && door == false && death == false)
+          {
+            if (chainSaw == true & oil == true)
+            {
+            System.out.println("You use the chain saw to cut out the wood. You escape from the house! Congradulation, you win!");
+            lobby = false;
+            door = true;
+            death = true;
+            }
+            else
+            {
+            System.out.println("You tried, but you can't open the door\ncandle - 0.25\n(G)go to other places (T)try agian");
+              String l = sc.nextLine();
+              candle -= 0.25;
+              if (candle <= 0)
+              {
+                System.out.println("Your candle goes out\nYou are killed by the some unknown monster");
+                death = true;
+              }
+              else if (l.equals("G"))
+              {
+              lobby = true;
+              door = true;
+              }
+              else if (l.equals("T"))
+              {
+                door = false;
+              }
+            }            
+          }
+          if (k.equals("G"))
+          lobby = true;
+        }
+        if (j.equals("C") && death == false)
+        {
+          System.out.println("There are also 6 rooms beside it\ncandle - 0.2\n(E)explore   (G)go back");
+          candle -= 0.2;
+          String m = sc.nextLine();
+          while (!(m.equals("E")||m.equals("G")))
+          {
+          System.out.println("(E)explore   (G)go back");
+          m = sc.nextLine();
+          } 
+          if (m.equals("E"))
+          {
+            System.out.println("candle - 3\nCandle + 5\nPhone + 2(can't use to lighting due to the poor bettery remained, but can be opened)\nYou find a sign of bluetooth\nYou find some oil");
+            candle += 2;
+            oil = true;
+            if (oil == true & chainSaw == true)
+            {
+              System.out.println("You find the oil for the chain saw! congradulation, you can use it now!\ncombat + 10");
+              combat += 10;
+            } 
+            System.out.println("Do you want to open the bluetooth?\n(Y)yes   (N)continue exploring");
+            String n = sc.nextLine();
+            while (!(n.equals("Y")||n.equals("N")))
+          {
+          System.out.println("(Y)yes   (N)continue exploring");
+          n = sc.nextLine();
+          } 
+            if (n.equals("Y"))
+            {
+              System.out.println("You recieve following massagges:\n\"We are tricked, this is a trape!\"\n\"Ah!!! mosters! So many people are killed!!\"\n\"My brother went up staires to find weepons\"\n\"We tried to fight with them, even we failed, we find their weekness\"\n\"They are affraid of light! You must make torch!\"");
+              bluetooth = true;
+            }
+            System.out.println("A monster suddenly rush out from a room breaking the door and crashes all of you. It's too fast that you did not see it\nlife - 2");
+            life -= 2;
+            if (bondage > 0)
+            {
+              System.out.println("Do you want use your bondage to heal yourself?\n(Y)yes   (N)no");
+              String o = sc.nextLine();
+              while (!(o.equals("Y")||o.equals("N")))
+              {
+              System.out.println("(Y)yes   (N)no");
+              o = sc.nextLine();
+              } 
+              if (o.equals("Y")) 
+              {
+                System.out.println("life + 2");
+                life += 2;
+                bondage -= 2;
+              }   
+              else 
+              System.out.println("you give up the chance but yoyu saved your bondages");     
+            }
+            if (bluetooth == true)
+            {
+              System.out.println("Looking at the breaking door, you suddenly have some thoughts\nPut in a number:");
+              String p = sc.nextLine();              
+                       
+            if (Double.parseDouble(p) <= 10)
+            {
+              System.out.println("You find out that you could put the oil on a stick from the brocken foor and light it\nYou made a Torch!\ncombat + 40");
+              combat += 40;
+              if (chainSaw = true)
+              {
+                System.out.println("The oil is used, you can't use your chain saw anymore.\nYou get a better weapon!\ncombat - 10");
+                combat -= 10;
+              }
+            }
+            else 
+            System.out.println("You did not catch it. You soon forget about it.");
+          }
+            System.out.println("Now you finished the exploration of the corridar!\nYou go back to the lobby");
+          }
+          else if (m.equals("G"))
+          lobby = true;
+        }
+        else if (j.equals("S") && death == false)
+        {
+          System.out.println("There are two rooms on your side\ncandle - 0.2");
+          candle -= 0.2;
+          if (person == true)
+          {
+            combat -= 1;
+            System.out.println("One of your companion disapeared\n combat - 1");
+          }
+          System.out.println("(R)right   (L)left   (B)go back");
+          String p = sc.nextLine();
+          while (!(p.equals("R")||p.equals("L")||p.equals("B")))
+              {
+              System.out.println("(R)right   (L)left   (B)go back");
+              p = sc.nextLine();
+              } 
+          if (p.equals("B"))
+          {
+            lobby = true;
+            candle -= 0.25;            
+          }
+          else if (p.equals("L"))
+          {
+            System.out.println("You find a lot of weapons in there\nYou heard some strange noises\nlike something is walking to you, but not humanity\ncandle - 0.1)\n(P)pick them up   (I)ignore");
+            String q = sc.nextLine();
+            if (q.equals("P"))
+            {
+              System.out.println("You have more weapons!\nCombat + 8");
+              combat += 8;
+            }
+            else
+            System.out.println("you loss the chance");
+
+
+            System.out.println("(S)stay   (L)leave");
+            String r = sc.nextLine();
+            while (!(r.equals("S")||r.equals("L")))
+            {
+            System.out.println("(S)stay   (L)leave");
+            r = sc.nextLine();
+            } 
+            if (r.equals("L"))
+            lobby = true;
+            else if (r.equals("S"))
+            {
+              fight = true;             
+            }
+          }
+          else if (p.equals("R"))
+          {
+            System.out.println("There is a laboratory\n candle - 0.2\n(E)explore   (B)Go back");
+            candle -= 0.2;
+            String s = sc.nextLine();
+            while (!(s.equals("E")||s.equals("B")))
+            {
+            System.out.println("(E)explore   (B)Go back");
+            s = sc.nextLine();
+            } 
+            while (death == false && time > 0)
+            {
+            if (s.equals("E"))
+            {
+              System.out.println("There is electic switch\nTere is a certrifuge\nThere are some huge fridges\nThere are a lot of instruments\nThere is a book with unknown languages\nThere is a dictionary\ncandle - 0.5\n(F)Fridge\n(D)dictionary\n(E)electric switch\n(B)book");
+              candle -= 0.5;
+              String x = sc.nextLine();
+              while (!(x.equals("F")||x.equals("D")||x.equals("E")||x.equals("B")))
+            {
+            System.out.println("(F)Fridge\n(D)dictionary\n(E)electric switch\n(B)book");
+            x = sc.nextLine();
+            } 
+              if (x.equals("B"))
+              {
+                System.out.println("You can't read it\ntime - 1\ncandle - 0.25");
+                candle -= 0.25;  
+                time -= 1;              
+              }
+              else if (x.equals("D"))
+              {
+                System.out.println("You don't understand\ntime - 1\ncandle - 0.25");
+                candle -= 0.25;  
+                time -= 1;
+              }
+              else if (x.equals("F"))
+              {
+                System.out.println("There are some black medicaments\ncandle - 0.1\ntime - 1\n(D)drink one   (P)Put one in the certrifuge   (I)ignore");
+                candle -= 0.25;  
+                time -= 1;
+                String y = sc.nextLine();
+                while (!(y.equals("I")||y.equals("D")||y.equals("P")))
+            {
+            System.out.println("(D)drink one   (P)Put one in the certrifuge   (I)ignore");
+            y = sc.nextLine();
+            } 
+                if (y.equals("D"))
+                {
+                  System.out.println("You feel a huge pain and changed to a monster without intellect\nYou die");
+                  death = true;
+                }
+                else if (y.equals("P"))
+                {
+                  System.out.println("The certifuge said 1 munite needed\ncangdle - 0.1\nTime - 1");
+                  candle -= 0.1;
+                  time -= 1;
+                }
+              }
+              else if (x.equals("E"))
+              {
+                System.out.println("It's all closed\nAll the switchs are clossed\ncandle - 0.1\ntime - 1\n(O)open all the switches   (I)ignore");
+                candle -= 0.1; 
+                time -= 1;
+                String z = sc.nextLine();
+                while (!(z.equals("O")||z.equals("I")))
+            {
+            System.out.println("(O)open all the switches   (I)ignore");
+            z = sc.nextLine();
+            }
+                if (z.equals("O"))
+                {
+                  death = true;
+                  System.out.println("You heard a lot of screeches and smell a smell of burnt\n(T)Take a rest   (G)Go out");
+                  String es = sc.nextLine();    
+                 if (es.equals("G"))
+                  System.out.println("You find out that all the light are open\nthere is a fire starts from motiple places in the house\nYou rushed out of the house\nYou escape from the house! Congruadulation, you win!");
+                  else
+                  System.out.println("Fire come in from the door\nYou are burn to die");
+                }
+                }
+            }
+              }
+              
+            if (death == false)
+                {
+                  fight = true;
+                }
+            }
+          
+            }               
+         
+        }
+      
+      
+      if (fight == true)
+      {
+        System.out.println("A lot of monsters goes in to the room with a person(boss) commannding them. Let's fight!");
+        double n1 = Math.random()*20 + 1;
+        double n2 = Math.random()*25 + 1;
+        double n3 = Math.random()*25 + 1;
+        double n4 = Math.random()*20 + 1;
+        double n5 = Math.random()*30 + 1;
+        System.out.println("A monster comes to you");
+        if (n1 > combat && death == false)
+        {
+          System.out.println("You hardly kills it\nlife - 3");
+          life -= 3;              
+        }
+        else if (n1 > combat - 2 && death == false)
+        {
+          System.out.println("You kills it with some injury\nlife - 2");
+          life -= 2;              
+        }
+        else if (death == false)
+          {
+            System.out.println("You are much powerful than it, you kills it easily");                               
+          }   
+        if (life <= 0 && death == false)
+        {
+          death = true;
+          System.out.println("There are too many monsters and they are so strong. You are killed.");
+          lobby = false;
+        }   
+            
+        if (n2 > combat && death == false)
+        {
+          System.out.println("You hardly kills it\nlife - 3");
+          life -= 3;              
+        }
+        else if (n2 > combat - 2 && death == false)
+        {
+          System.out.println("You kills it with some injury\nlife - 2");
+          life -= 2;              
+        }
+        else if (death == false)
+          {
+            System.out.println("You are much powerful than it, you kills it easily");                               
+          }   
+        if (life <= 0 && death == false)
+        {
+          death = true;
+          System.out.println("There are too many monsters and they are so strong. You are killed.");
+          lobby = false;
+        }   
+           
+        if (n3 > combat && death == false)
+        {
+          System.out.println("You hardly kills it\nlife - 3");
+          life -= 3;              
+        }
+        else if (n3 > combat - 2 && death == false)
+        {
+          System.out.println("You kills it with some injury\nlife - 2");
+          life -= 2;              
+        }
+        else if (death == false)
+          {
+            System.out.println("You are much powerful than it, you kills it easily");                               
+          }   
+        if (life <= 0 && death == false)
+        {
+          death = true;
+          System.out.println("There are too many monsters and they are so strong. You are killed.");
+          lobby = false;
+        }   
+         
+        if (n4 > combat && death == false)
+        {
+          System.out.println("You hardly kills it\nlife - 3");
+          life -= 3;              
+        }
+        else if (n4 > combat - 2 && death == false)
+        {
+          System.out.println("You kills it with some injury\nlife - 2");
+          life -= 2;              
+        }
+        else if (death == false)
+          {
+            System.out.println("You are much powerful than it, you kills it easily");                               
+          }   
+        if (life <= 0 && death == false)
+        {
+          death = true;
+          System.out.println("There are too many monsters and they are so strong. You are killed.");
+          lobby = false;
+        }  
+        
+        if (n5 > combat && death == false)
+        {
+          System.out.println("You hardly kills it\nlife - 3");
+          life -= 3;              
+        }
+        else if (n5 > combat - 2 && death == false)
+        {
+          System.out.println("You kills it with some injury\nlife - 2");
+          life -= 2;              
+        }
+        else if (death == false)
+          {
+            System.out.println("You are much powerful than it, you kills it easily");                               
+          }   
+        if (life <= 0 && death == false)
+        {
+          death = true;
+          System.out.println("There are too many monsters and they are so strong. You are killed.");
+          lobby = false;
+        }  
+        if (death == false)
+        {
+        System.out.println("You kill all the mosters,congradulation!\nYou win the game, now the house is yours."); 
+        lobby =false;
+        }        
+      }
+  }
+}
+
+
+
